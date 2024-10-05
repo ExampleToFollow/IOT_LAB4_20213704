@@ -18,6 +18,7 @@ import com.example.iot_lab4_20213704.Beans.Liga;
 import com.example.iot_lab4_20213704.Beans.LigaBusqueda;
 import com.example.iot_lab4_20213704.Service.ServiceRetrofit;
 
+import java.util.Arrays;
 import java.util.List;
 
 import retrofit2.Call;
@@ -46,15 +47,7 @@ public class ListaFragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ListaFragment.
-     */
-    // TODO: Rename and change types and number of parameters
+
     public static ListaFragment newInstance(String param1, String param2) {
         ListaFragment fragment = new ListaFragment();
         Bundle args = new Bundle();
@@ -79,27 +72,20 @@ public class ListaFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view  = inflater.inflate(R.layout.fragment_lista, container, false);
-
-         Button botonBuscar = view.findViewById(R.id.boton_buscar_ligas);
+        Button botonBuscar = view.findViewById(R.id.boton_buscar_ligas);
+        EditText pais = view.findViewById(R.id.pais);
         botonBuscar.setOnClickListener(view1 -> {
-            buscarLista(view);
+            if(pais.getText().toString().isEmpty()){
+                buscarSinPais(view);
+            }else{
+                buscarConPais(view,pais.getText().toString());
+            }
         });
         return view;
     }
 
-    public void buscarLista(View view){
-        EditText pais = view.findViewById(R.id.pais);
-        String paisStr  = pais.getText().toString();
-        if(paisStr ==null){
-            //Se usa primer metodo
-            buscarSinPais(view);
-        }else{
-            //Segundo metodo
-            buscarConPais(view,paisStr);
-        }
-    }
 
-
+    //Llena datos
     public void buscarSinPais(View view){
         ServiceRetrofit service = new Retrofit.Builder()
                 .baseUrl("https://www.thesportsdb.com")
@@ -127,9 +113,7 @@ public class ListaFragment extends Fragment {
 
         });
     }
-
-    public void buscarConPais(View view,String pais) {
-
+    public void buscarConPais(View view,String pais){
     }
 
 }

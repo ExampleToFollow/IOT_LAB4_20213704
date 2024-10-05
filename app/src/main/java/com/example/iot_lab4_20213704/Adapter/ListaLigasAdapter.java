@@ -15,12 +15,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class ListaLigasAdapter  extends RecyclerView.Adapter<ListaLigasAdapter.LigaViewHolder>{
-    private Liga[] lista;
+    private List<Liga> lista;
     private Context context;
-    public Liga[] getLista() {
+    public List<Liga> getLista() {
         return lista;
     }
-    public void setLista(Liga[] lista) {
+    public void setLista(List<Liga> lista) {
         this.lista = lista;
     }
     public Context getContext() {
@@ -32,7 +32,7 @@ public class ListaLigasAdapter  extends RecyclerView.Adapter<ListaLigasAdapter.L
 
     @Override
     public int getItemCount(){
-        return lista.length;
+        return lista.size();
     }
 
     public class LigaViewHolder extends RecyclerView.ViewHolder {
@@ -51,7 +51,7 @@ public class ListaLigasAdapter  extends RecyclerView.Adapter<ListaLigasAdapter.L
 
     @Override
     public void onBindViewHolder(@NonNull LigaViewHolder holder , int position){
-        Liga liga = lista[position];
+        Liga liga = lista.get(position);
         holder.elemento = liga;
         //Aqui va toda la logica de la vista
         String nameLiga  = liga.getStrLeague();
