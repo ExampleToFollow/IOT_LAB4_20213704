@@ -25,11 +25,11 @@
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="70sp">
+            android:layout_height="90sp">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="80sp"
-                android:layout_height="wrap_content"
+                android:layout_height="70sp"
                 app:boxBackgroundMode="outline"
                 app:boxCornerRadiusTopStart="25dp"
                 app:boxCornerRadiusTopEnd="25dp"
@@ -49,7 +49,7 @@
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="175sp"
-                android:layout_height="wrap_content"
+                android:layout_height="70sp"
                 app:boxBackgroundMode="outline"
                 app:boxCornerRadiusTopStart="25dp"
                 app:boxCornerRadiusTopEnd="25dp"
@@ -69,6 +69,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/boton_buscar_posiciones"
                 android:layout_marginStart="10sp"
                 android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"

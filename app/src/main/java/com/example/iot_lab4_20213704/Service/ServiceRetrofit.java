@@ -1,6 +1,7 @@
 package com.example.iot_lab4_20213704.Service;
 import com.example.iot_lab4_20213704.Beans.Liga;
 import com.example.iot_lab4_20213704.Beans.LigaBusqueda;
+import com.example.iot_lab4_20213704.Beans.PositionBusqueda;
 
 import java.util.List;
 
@@ -14,12 +15,9 @@ public interface ServiceRetrofit {
     @GET("/api/v1/json/3/search_all_leagues.php")
     Call<LigaBusqueda> listarLigasBuscar(@Query("c") String pais);
 
-//    @GET("/api/v1/json/3/lookuptable.php")
-//    Call<PositionDto> listarPosiciones(@Query("l") String idLiga,
-//                                       @Query("s") String temporada);
-//
-//    @GET("/api/v1/json/3/eventsround.php")
-//    Call<EventDto> listarEventos(@Query("id") String idLiga,
-//                                 @Query("r") String ronda,
-//                                 @Query("s") String temporada);
+    @GET("/api/v1/json/3/lookuptable.php")
+    Call<PositionBusqueda> listarPosiciones(@Query("l") String idLiga,
+                                            @Query("s") String season);
+
+
 }
