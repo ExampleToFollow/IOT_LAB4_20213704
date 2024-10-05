@@ -60,4 +60,23 @@ public class AppActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.fragmento_total, miFragmento);
         fragmentTransaction.commit();
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

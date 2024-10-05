@@ -1,12 +1,30 @@
 package com.example.iot_lab4_20213704;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+
+import com.example.iot_lab4_20213704.Adapter.ListaLigasAdapter;
+import com.example.iot_lab4_20213704.Beans.Liga;
+import com.example.iot_lab4_20213704.Beans.LigaBusqueda;
+import com.example.iot_lab4_20213704.Service.ServiceRetrofit;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -56,9 +74,62 @@ public class ListaFragment extends Fragment {
     }
 
     @Override
+    @SuppressLint("MissingInflatedId")
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_lista, container, false);
+        View view  = inflater.inflate(R.layout.fragment_lista, container, false);
+
+         Button botonBuscar = view.findViewById(R.id.boton_buscar_ligas);
+        botonBuscar.setOnClickListener(view1 -> {
+            buscarLista(view);
+        });
+        return view;
     }
+
+    public void buscarLista(View view){
+        EditText pais = view.findViewById(R.id.pais);
+        String paisStr  = pais.getText().toString();
+        if(paisStr ==null){
+            //Se usa primer metodo
+            buscarSinPais(view);
+        }else{
+            //Segundo metodo
+            buscarConPais(view,paisStr);
+        }
+    }
+
+
+    public void buscarSinPais(View view){
+        ServiceRetrofit service = new Retrofit.Builder()
+                .baseUrl("https://www.thesportsdb.com")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+                .create(ServiceRetrofit.class);
+        service.listarLigas().enqueue(new Callback<LigaBusqueda>() {
+            @Override
+            public void onResponse(Call<LigaBusqueda> call, Response<LigaBusqueda> response) {
+                if(response.isSuccessful()){
+                    LigaBusqueda ligasLista = response.body();
+                    ListaLigasAdapter adapter = new ListaLigasAdapter();
+                    adapter.setContext(getContext());
+                    adapter.setLista(ligasLista.getLigas());
+                    RecyclerView recyclerView = view.findViewById(R.id.recyclerLista);
+                    recyclerView.setAdapter(adapter);
+                    recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<LigaBusqueda> call, Throwable t) {
+                //No hace nada
+            }
+
+        });
+    }
+
+    public void buscarConPais(View view,String pais) {
+
+    }
+
 }
