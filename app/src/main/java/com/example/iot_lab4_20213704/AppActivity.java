@@ -1,6 +1,7 @@
 package com.example.iot_lab4_20213704;
 
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,5 +21,16 @@ public class AppActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+    }
+
+    public void ligas(View view){
+
+    }
+
+    public void resultados(View view){
+
+    }
+    public void posiciones(View view){
+
     }
 }
