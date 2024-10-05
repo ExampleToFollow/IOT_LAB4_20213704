@@ -6,14 +6,55 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-
+   <LinearLayout
+       android:background="@color/white"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:orientation="vertical">
     <TextView
+        android:layout_marginTop="10sp"
+        android:layout_gravity="center_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:text="ESTADÍSTICAS DE LIGAS DE FUTBOL 'TELE-FUTBOL'"/>
 
+       <Button
+           android:layout_marginTop="20sp"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="Ingresar"
+           android:textSize="25sp"
+           android:layout_gravity="center_horizontal"
+           android:onClick="ingresar"/>
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal"
+           android:layout_marginStart="10sp">
+           <ImageView
+               android:layout_width="200sp"
+               android:layout_height="400sp"
+               android:src="@drawable/imagen1"
+               />
+           <ImageView
+               android:layout_marginStart="10sp"
+               android:layout_width="170sp"
+               android:layout_height="400sp"
+               android:src="@drawable/imagen2"/>
+       </LinearLayout>
+
+       <TextView
+           android:layout_marginTop="10sp"
+           android:layout_gravity="center_horizontal"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textStyle="bold"
+           android:textColor="@color/black"
+           android:text="ELABORADO POR : HINEILL CÉSPEDES - 20213704"/>
+
+   </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
