@@ -20,6 +20,7 @@ import com.example.iot_lab4_20213704.Service.ServiceRetrofit;
 
 import java.util.Arrays;
 import java.util.List;
+import android.widget.Toast;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -114,6 +115,36 @@ public class ListaFragment extends Fragment {
         });
     }
     public void buscarConPais(View view,String pais){
+        ServiceRetrofit service = new Retrofit.Builder()
+                .baseUrl("https://www.thesportsdb.com")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+                .create(ServiceRetrofit.class);
+
+        service.listarLigasBuscar(pais).enqueue(new Callback<LigaBusqueda>() {
+            @Override
+            public void onResponse(Call<LigaBusqueda> call, Response<LigaBusqueda> response) {
+                if(response.isSuccessful()){
+                    LigaBusqueda ligasLista = response.body();
+                    ListaLigasAdapter adapter = new ListaLigasAdapter();
+                    adapter.setContext(getContext());
+                    if(ligasLista.getCountries()!=null){
+                        adapter.setLista(ligasLista.getCountries());
+                        RecyclerView recyclerView = view.findViewById(R.id.recyclerLista);
+                        recyclerView.setAdapter(adapter);
+                        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                    }else{
+                        Toast.makeText(getContext(), "No se encontraron ligas", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<LigaBusqueda> call, Throwable t) {
+                //No hace nada
+            }
+        });
+
     }
 
 }

@@ -26,6 +26,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="250sp"
                 android:layout_height="70sp"
+                android:textColor="@color/black"
                 app:boxBackgroundMode="outline"
                 app:boxCornerRadiusTopStart="25dp"
                 app:boxCornerRadiusTopEnd="25dp"
@@ -38,6 +39,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_gravity="center_vertical"
                     android:id="@+id/pais"
+                    android:textColor="@color/black"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Buscar por País"

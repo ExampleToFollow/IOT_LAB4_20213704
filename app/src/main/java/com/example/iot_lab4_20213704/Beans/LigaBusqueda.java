@@ -6,6 +6,7 @@ import java.util.List;
 
 public class LigaBusqueda implements Serializable {
     private ArrayList<Liga> leagues ;
+    private ArrayList<Liga> countries ;
 
     //Geter y setters
     public ArrayList<Liga> getLigas() {
@@ -16,5 +17,19 @@ public class LigaBusqueda implements Serializable {
         this.leagues = ligas;
     }
 
+    public ArrayList<Liga> getLeagues() {
+        return leagues;
+    }
 
+    public void setLeagues(ArrayList<Liga> leagues) {
+        this.leagues = leagues;
+    }
+
+    public ArrayList<Liga> getCountries() {
+        return countries;
+    }
+
+    public void setCountries(ArrayList<Liga> countries) {
+        this.countries = countries;
+    }
 }
