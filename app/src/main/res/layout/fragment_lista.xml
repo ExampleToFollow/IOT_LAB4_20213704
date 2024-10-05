@@ -62,6 +62,6 @@
             android:orientation="vertical"
             android:id="@+id/recyclerLista"
             android:layout_width="match_parent"
-            android:layout_height="500sp"/>
+            android:layout_height="600sp"/>
    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

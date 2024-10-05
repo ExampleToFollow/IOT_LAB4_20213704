@@ -62,12 +62,21 @@ public class ListaLigasAdapter  extends RecyclerView.Adapter<ListaLigasAdapter.L
         TextView idLigaText = holder.itemView.findViewById(R.id.idLiga);
         TextView nombreLigaText = holder.itemView.findViewById(R.id.nombreLiga);
         TextView deporteLigaText = holder.itemView.findViewById(R.id.deporteLiga);
-        TextView nombreAlternativoText = holder.itemView.findViewById(R.id.nombreAlternativo);
+        TextView nombreAlternativoText1 = holder.itemView.findViewById(R.id.nombreAlternativo1);
+        TextView nombreAlternativoTex2 = holder.itemView.findViewById(R.id.nombreAlternativo2);
 
         idLigaText.setText(idLiga);
         nombreLigaText.setText(nameLiga);
         deporteLigaText.setText(nameSport);
-        nombreAlternativoText.setText(nameLigaAlternative);
+        if(nameLigaAlternative.split(",").length>1) {
+            //Hay dos ligas
+            nombreAlternativoText1.setText(nameLigaAlternative.split(",")[0]);
+            nombreAlternativoTex2.setText(nameLigaAlternative.split(",")[1]);
+        }else{
+            nombreAlternativoText1.setText(nameLigaAlternative);
+            holder.itemView.findViewById(R.id.alter2).setVisibility(View.GONE);
+        }
+
 
     }
 
