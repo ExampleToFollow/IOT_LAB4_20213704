@@ -14,7 +14,7 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:text="Resultadosde los Partidos"
+            android:text="Resultados de los Partidos"
             android:textColor="@color/black"
             android:textStyle="bold"
             android:textSize="30sp"
@@ -28,7 +28,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="75sp"
-                android:layout_height="wrap_content"
+                android:layout_height="60sp"
                 app:boxBackgroundMode="outline"
                 app:boxCornerRadiusTopStart="25dp"
                 app:boxCornerRadiusTopEnd="25dp"
@@ -48,7 +48,7 @@
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="95sp"
-                android:layout_height="wrap_content"
+                android:layout_height="60sp"
                 app:boxBackgroundMode="outline"
                 app:boxCornerRadiusTopStart="25dp"
                 app:boxCornerRadiusTopEnd="25dp"
@@ -68,7 +68,7 @@
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="90sp"
-                android:layout_height="wrap_content"
+                android:layout_height="60sp"
                 app:boxBackgroundMode="outline"
                 app:boxCornerRadiusTopStart="25dp"
                 app:boxCornerRadiusTopEnd="25dp"
