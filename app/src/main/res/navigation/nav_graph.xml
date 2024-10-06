@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/fragment_lista">
+    <fragment
+        android:id="@+id/fragment_lista"
+        android:name="com.example.iot_lab4_20213704.ListaFragment"
+        android:label="fragment_lista"
+        tools:layout="@layout/fragment_lista" />
+    <fragment
+        android:id="@+id/fragment_posiciones"
+        android:name="com.example.iot_lab4_20213704.PosicionesFragment"
+        android:label="fragment_posiciones"
+        tools:layout="@layout/fragment_posiciones" />
+    <fragment
+        android:id="@+id/fragment_resultados"
+        android:name="com.example.iot_lab4_20213704.ResultadosFragment"
+        android:label="fragment_resultados"
+        tools:layout="@layout/fragment_resultados" />
+</navigation>

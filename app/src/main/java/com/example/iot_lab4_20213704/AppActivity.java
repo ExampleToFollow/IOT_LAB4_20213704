@@ -2,6 +2,7 @@ package com.example.iot_lab4_20213704;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +12,8 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 
 public class AppActivity extends AppCompatActivity {
 
@@ -27,17 +30,24 @@ public class AppActivity extends AppCompatActivity {
 
         //Seteamos le fragmento en la vista
 
-        Fragment miFragmento = new ListaFragment();  // Reemplaza con tu propio fragmento
+        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.fragmento_total);
+        NavController controller = navHostFragment.getNavController();
+        ((Button) findViewById(R.id.ligas)).setOnClickListener(view2->{
+            controller.navigate(R.id.fragment_lista);
+        });
+        ((Button) findViewById(R.id.posiciones)).setOnClickListener(view2->{
+            controller.navigate(R.id.fragment_posiciones);
+        });
 
-        // Obtener el FragmentManager y comenzar una transacción
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        // Reemplazar el contenedor con el nuevo fragmento
-        fragmentTransaction.replace(R.id.fragmento_total, miFragmento);
-        // Confirmar la transacción
-        fragmentTransaction.commit();
+        ((Button) findViewById(R.id.resultados)).setOnClickListener(view2->{
+            controller.navigate(R.id.fragment_resultados);
+        });
+
+
     }
 
+
+    //Primer intento de appActivity
     public void ligas(View view){
         Fragment miFragmento = new ListaFragment();  // Reemplaza con tu propio fragmento
         FragmentManager fragmentManager = getSupportFragmentManager();

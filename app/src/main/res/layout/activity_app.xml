@@ -14,6 +14,8 @@
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fragmento_total"
+            app:navGraph="@navigation/nav_graph"
+            android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
             android:layout_height="670sp"
             />
@@ -26,6 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/ligas"
                 android:layout_marginStart="10sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -36,9 +39,10 @@
                 app:strokeWidth="2dp"
                 app:cornerRadius="50dp"
                 android:layout_marginEnd="10dp"
-                android:onClick="ligas"/>
+                />
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/posiciones"
                 android:layout_marginStart="15sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -48,7 +52,6 @@
                 app:strokeColor="@color/black"
                 app:strokeWidth="2dp"
                 app:cornerRadius="50dp"
-                android:onClick="posiciones"
                 android:layout_marginEnd="10dp" />
 
             <com.google.android.material.button.MaterialButton
@@ -56,7 +59,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Resultados"
-                android:onClick="resultados"
+                android:id="@+id/resultados"
+
                 android:textColor="#17518A"
                 app:backgroundTint="@color/white"
                 app:strokeColor="@color/black"
