@@ -67,6 +67,7 @@ public class ResultadosFragment extends Fragment implements SensorEventListener 
      * @return A new instance of fragment ResultadosFragment.
      */
     // TODO: Rename and change types and number of parameters
+    String active = "no";
     public static ResultadosFragment newInstance(String param1, String param2) {
         ResultadosFragment fragment = new ResultadosFragment();
         Bundle args = new Bundle();
@@ -149,23 +150,27 @@ public class ResultadosFragment extends Fragment implements SensorEventListener 
     public void onSensorChanged(SensorEvent sensorEvent){
         if(Math.sqrt(Math.pow(sensorEvent.values[0] ,2)  +  Math.pow(sensorEvent.values[1] ,2)  + Math.pow(sensorEvent.values[2] ,2)) >20 ){
             //Mostramos el dialog
-            new MaterialAlertDialogBuilder(getContext())
-                    .setTitle("Supero el umbral de 20m/s2")
-                    .setMessage("¿Eliminará sus resultados?")
-                    .setPositiveButton("Yes", (dialog, which) -> {
-                        //Eliminamos los datos
-                        ListaResultadosAdapter adapter = new ListaResultadosAdapter();
-                        adapter.setContext(getContext());
-                        adapter.setLista(new ArrayList<Resultado>());
-                        RecyclerView recyclerView = supreme.findViewById(R.id.recyclerPartidos);
-                        recyclerView.setAdapter(adapter);
-                        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+            if(active.equals("no")){
+                new MaterialAlertDialogBuilder(getContext())
+                        .setTitle("Supero el umbral de 20m/s2")
+                        .setMessage("¿Eliminará sus resultados?")
+                        .setPositiveButton("Yes", (dialog, which) -> {
+                            //Eliminamos los datos
+                            ListaResultadosAdapter adapter = new ListaResultadosAdapter();
+                            adapter.setContext(getContext());
+                            adapter.setLista(new ArrayList<Resultado>());
+                            RecyclerView recyclerView = supreme.findViewById(R.id.recyclerPartidos);
+                            recyclerView.setAdapter(adapter);
+                            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                            active = "no";
+                        })
+                        .setNegativeButton("Nou", (dialog, which) -> {
+                            active = "no";
+                        })
+                        .show();
+                active = "si";
+            }
 
-                    })
-                    .setNegativeButton("Nou", (dialog, which) -> {
-                        //No se hace nada
-                    })
-                    .show();
         }
     }
     @Override
