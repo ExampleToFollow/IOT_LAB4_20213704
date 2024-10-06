@@ -18,10 +18,10 @@ public class Resultado implements Serializable {
     private String strDescriptionEN;
     private String strHomeTeam;
     private String strAwayTeam;
-    private Integer intHomeScore;
-    private Integer intRound;
-    private Integer intAwayScore;
-    private Integer intSpectators; // Puede ser null
+    private String intHomeScore;
+    private String intRound;
+    private String intAwayScore;
+    private String intSpectators; // Puede ser null
     private String strOfficial;
     private String strTimestamp;
     private String dateEvent;
@@ -33,8 +33,8 @@ public class Resultado implements Serializable {
     private String strHomeTeamBadge;
     private String idAwayTeam;
     private String strAwayTeamBadge;
-    private Integer intScore; // Puede ser null
-    private Integer intScoreVotes; // Puede ser null
+    private String intScore; // Puede ser null
+    private String intScoreVotes; // Puede ser null
     private String strResult;
     private String idVenue; // Puede ser null
     private String strVenue;
@@ -53,7 +53,6 @@ public class Resultado implements Serializable {
     private String strStatus;
     private String strPostponed;
     private String strLocked;
-
 
     public String getIdEvent() {
         return idEvent;
@@ -159,35 +158,35 @@ public class Resultado implements Serializable {
         this.strAwayTeam = strAwayTeam;
     }
 
-    public Integer getIntHomeScore() {
+    public String getIntHomeScore() {
         return intHomeScore;
     }
 
-    public void setIntHomeScore(Integer intHomeScore) {
+    public void setIntHomeScore(String intHomeScore) {
         this.intHomeScore = intHomeScore;
     }
 
-    public Integer getIntRound() {
+    public String getIntRound() {
         return intRound;
     }
 
-    public void setIntRound(Integer intRound) {
+    public void setIntRound(String intRound) {
         this.intRound = intRound;
     }
 
-    public Integer getIntAwayScore() {
+    public String getIntAwayScore() {
         return intAwayScore;
     }
 
-    public void setIntAwayScore(Integer intAwayScore) {
+    public void setIntAwayScore(String intAwayScore) {
         this.intAwayScore = intAwayScore;
     }
 
-    public Integer getIntSpectators() {
+    public String getIntSpectators() {
         return intSpectators;
     }
 
-    public void setIntSpectators(Integer intSpectators) {
+    public void setIntSpectators(String intSpectators) {
         this.intSpectators = intSpectators;
     }
 
@@ -279,19 +278,19 @@ public class Resultado implements Serializable {
         this.strAwayTeamBadge = strAwayTeamBadge;
     }
 
-    public Integer getIntScore() {
+    public String getIntScore() {
         return intScore;
     }
 
-    public void setIntScore(Integer intScore) {
+    public void setIntScore(String intScore) {
         this.intScore = intScore;
     }
 
-    public Integer getIntScoreVotes() {
+    public String getIntScoreVotes() {
         return intScoreVotes;
     }
 
-    public void setIntScoreVotes(Integer intScoreVotes) {
+    public void setIntScoreVotes(String intScoreVotes) {
         this.intScoreVotes = intScoreVotes;
     }
 

@@ -9,9 +9,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.iot_lab4_20213704.Adapter.ListaPosicionesAdapter;
+import com.example.iot_lab4_20213704.Adapter.ListaResultadosAdapter;
 import com.example.iot_lab4_20213704.Beans.PositionBusqueda;
 import com.example.iot_lab4_20213704.Beans.ResultadoBusqueda;
 import com.example.iot_lab4_20213704.Service.ServiceRetrofit;
@@ -72,8 +75,20 @@ public class ResultadosFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_resultados, container, false);
+        View view  = inflater.inflate(R.layout.fragment_resultados, container, false);
+        Button b = view.findViewById(R.id.buscar);
+        b.setOnClickListener(view1->{
+            EditText idLiga = view.findViewById(R.id.idLiga);
+            EditText season =  view.findViewById(R.id.season);
+            EditText ronda =  view.findViewById(R.id.ronda);
+
+            if(!idLiga.getText().toString().trim().isEmpty() && !season.getText().toString().trim().isEmpty() && !ronda.getText().toString().trim().isEmpty()){
+                buscarResultados(view,idLiga.getText().toString(),season.getText().toString(),ronda.getText().toString());
+            }else{
+                Toast.makeText(getContext(), "Debes llenar todos los campos", Toast.LENGTH_SHORT).show();
+            }
+        });
+        return view;
     }
 
 
@@ -84,15 +99,15 @@ public class ResultadosFragment extends Fragment {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
                 .create(ServiceRetrofit.class);
-        service.getEventos(idLiga, temporada, ronda).enqueue(new Callback<ResultadoBusqueda>() {
+        service.getEventos(idLiga, ronda, temporada).enqueue(new Callback<ResultadoBusqueda>() {
             @Override
             public void onResponse(Call<ResultadoBusqueda> call, Response<ResultadoBusqueda> response) {
                 if(response.isSuccessful()){
                     ResultadoBusqueda resultadosBusqueda = response.body();
                     if(resultadosBusqueda.getEvents() != null){
-                        ListaPosicionesAdapter adapter = new ListaPosicionesAdapter();
+                        ListaResultadosAdapter adapter = new ListaResultadosAdapter();
                         adapter.setContext(getContext());
-                        adapter.setLista(posicionesLista.getTable());
+                        adapter.setLista(resultadosBusqueda.getEvents());
                         RecyclerView recyclerView = view.findViewById(R.id.recyclerPartidos);
                         recyclerView.setAdapter(adapter);
                         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -103,10 +118,11 @@ public class ResultadosFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<PositionBusqueda> call, Throwable t) {
+            public void onFailure(Call<ResultadoBusqueda> call, Throwable t) {
                 //No hace nada
                 Toast.makeText(getContext(), "No se encontraron ligas", Toast.LENGTH_SHORT).show();
             }
+            //No hace nada
 
         });
     }
